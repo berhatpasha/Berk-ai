@@ -1,2 +1,2 @@
 # Berk-ai
-Discord Bot framework with python
+Ai bot with simple algorithm for Türkiye
