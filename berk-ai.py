@@ -17,7 +17,7 @@ for i in tqdm(range(10)):
     import time
     import colorama
     import discord
-    from database.database import discord_api_token, argo
+    from database.database import discord_api_token, argo, user
     from colorama import Fore
     from discord.ext import commands
     from difflib import get_close_matches
@@ -135,13 +135,12 @@ class MyClient(discord.Client):
 
         if len(recent_messages[user_id]) == 5 and all(msg == content for msg in recent_messages[user_id]):
             await message.channel.send(f"{message.author.mention}, lütfen aynı mesajı spam yapma!")
-            # Kullanıcının mesaj geçmişini temizleyelim ki bir daha uyarılmasın hemen
             recent_messages[user_id] = []
 
 
         print(f"{message.channel}")
         print(f'{Fore.CYAN}Message from {message.author}: {message.content}')
-        if any(role.id == 1270770737048981504 for role in message.author.roles):
+        if any(role.id == int(user) for role in message.author.roles):
             if message.content.startswith("!aimode"):
                 if message.content.split()[1] == "True":
                     await message.channel.send("AiMode başarıyla etkinleştirildi !")
