@@ -17,7 +17,7 @@ for i in tqdm(range(10)):
     import time
     import colorama
     import discord
-    from database.database import discord_api_token, argo, user
+    from database.database import discord_api_token, argo
     from colorama import Fore
     from discord.ext import commands
     from difflib import get_close_matches
@@ -70,7 +70,6 @@ print("\n"*1)
 def save_json(filename, data):
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(data, f, ensure_ascii=False, indent=4)
-
 
 def load_json(filename):
     with open(filename, 'r', encoding='utf-8') as f:
@@ -138,9 +137,10 @@ class MyClient(discord.Client):
             recent_messages[user_id] = []
 
 
+        # General
         print(f"{message.channel}")
         print(f'{Fore.CYAN}Message from {message.author}: {message.content}')
-        if any(role.id == int(user) for role in message.author.roles):
+        if any(role.id == 1288889233561358409 for role in message.author.roles): # role.id = Role to use the bot's features (moderation applies to all users)
             if message.content.startswith("!aimode"):
                 if message.content.split()[1] == "True":
                     await message.channel.send("AiMode başarıyla etkinleştirildi !")

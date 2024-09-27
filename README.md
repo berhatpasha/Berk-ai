@@ -8,7 +8,7 @@
 
 > ### Adaptation
 > - Enter your token in the `discord_api_token` variable in **/database/database.py**
-> - Again enter the id of the role that can use the bot under the `user` variable in database/database.py
+> - Again enter the id of the role that can use the bot under the `role.id` variable in **berk-ai.py line 143**
 > - The Ai database is under **/database/aidatabase.json**... you can edit this file as in the example or let it auto-edit with training mode on.
 > - Customize the rest of the program and translate it into the language of your choice
 
